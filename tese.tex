@@ -1,0 +1,20 @@
+% ------ Preâmbulo 
+\documentclass[12pt,oneside]{book}
+
+\usepackage{ifxetex}
+\ifxetex
+    % XeLaTeX
+    \usepackage{polyglossia}
+    \usepackage{fontspec}
+\else
+    % default: pdfLaTeX
+    \usepackage[brazil]{babel}
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage[babel=true]{microtype}
+\fi
+
+
+\begin{document}
+Exemplo mínimo
+\end{document}
