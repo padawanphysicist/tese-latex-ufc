@@ -36,15 +36,3 @@ e.g Física
 ```
 Uma lista com os orientadores; pode ser desligada usando a opção `nosupervisor`, ou, no caso de mais de um orientador, usando a opção `multiplesupervisors`.
 
-## Declaration
-[//]: #Implimented in version 1.1 is the \declaration Command. 
-[//]: #This typesets the declaration (below) that this thesis is your own work, required in the front of each PhD Thesis.
-[//]: #I, <Student’s Full Name>, declare that this thesis, submitted in partial fulfilment of the requirements for the award of 
-[//]: #<Your Degree>, of the School of <Your School>, University of Wollongong, is wholly my own work unless otherwise referenced
-or acknowledged. The document has not been submitted for qualifications at any other academic institution.
-
-
-[//]: #------------------------------------
-
-[//]: #<Student’s Full Name>, July 1, 2013
-
