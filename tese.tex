@@ -12,19 +12,13 @@
 % ------ Preâmbulo 
 \documentclass[12pt,oneside]{book}
 
-\usepackage{ifxetex}
-\ifxetex
-    % XeLaTeX
-    \usepackage{polyglossia}
-    \usepackage{fontspec}
-\else
-    % default: pdfLaTeX
-    \usepackage[brazil]{babel}
-    \usepackage[T1]{fontenc}
-    \usepackage[utf8]{inputenc}
-    \usepackage[babel=true]{microtype}
-\fi
+% Este é o "coração" do documento: cria a capa, folha de rosto, ficha
+% catalográfica e toda estrutura específica para as normas da UFC
+\usepackage{teseufc}
 
+% Cuidado aqui! trocar `input' por `include' pode causar uma baita dor de 
+% cabeça. A não ser que você saiba o que está fazendo, não mexa nesse comando!
+%\input{preambulo}
 
 \begin{document}
 Exemplo mínimo

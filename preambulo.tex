@@ -1,0 +1,51 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
+% preambulo.tex
+% Preâmbulo do documento principal (tese.tex)
+%
+% Recomendo que você não use esse preâmbulo indiscriminadamente (mesmo que a
+% compilação ocorra sem problemas), e que faça um esforço para ler (mesmo que
+% pouco) a documentação de cada um dos pacotes utilizados. Neste caso, além dos
+% já conhecidos www.google.com e http://tex.stackexchange.com/, também é
+% recomendável dar uma olhada no wikibook do LaTeX:
+%
+% http://en.wikibooks.org/wiki/LaTeX
+%
+% Os pacotes usados aqui são os mais básicos, referentes à formatação de texto,
+% legendas nas figuras e coisas do tipo. Se você tem necessidades mais
+% específicas, você pode procurar no Google, adicionando os termos de busca
+% 'LaTeX' e 'packages'. Um endereço muito útil é o http://ctan.org/, que é um
+% repositório bem abrangente do TeX.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
+% Formato básico da página
+%
+% Para os ajustes, usei basicamente o wikibook:
+%
+% http://en.wikibooks.org/wiki/LaTeX/Page_Layout
+%
+% Se você quiser brincar um pouco com os ajustes das dimensões, uma dica: use o
+% pacote showframe, descomentando a linha abaixo:
+%\usepackage{showframe}
+% Isso irá mostrar numa grade as margens do documento
+\usepackage{geometry}
+% Dimensões para impressão, de acordo com o manual da UFC.
+\geometry{a4paper,inner=4cm, outer=2cm, top=3cm, bottom=2cm}
+
+\pdfpagewidth=\paperwidth 
+\pdfpageheight=\paperheight
+% This acts as a failsafe to ensure things aren't stretched or moved when it's finally printed as a PDF.
+
+
+\usepackage{ifxetex}
+\ifxetex
+    % XeLaTeX
+    \usepackage{polyglossia}
+    \usepackage{fontspec}
+\else
+    % default: pdfLaTeX
+    \usepackage[brazil]{babel}
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage[babel=true]{microtype}
+\fi
