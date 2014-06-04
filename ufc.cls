@@ -20,7 +20,15 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesClass{ufc}[2014/04/24 v.0.1 Normalizacao de trabalhos academicos da Universidade federal do Ceara]
 
-
+% Opções de classe
+\DeclareOption{tese}{}
+\DeclareOption{dissertacao}{}
+\DeclareOption{monografia}{}
+\DeclareOption{artigo}{}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\ProcessOptions\relax
+% Utiliza A4 como tamanho padrão
+\LoadClass[a4paper]{report}
 
 % Pacotes essenciais para o funcionamento
 \RequirePackage{geometry} % Para ajustar as dimensões da página 
