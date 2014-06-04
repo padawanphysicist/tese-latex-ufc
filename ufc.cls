@@ -297,4 +297,14 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
 }%
 {\par\vfil\null\endtitlepage}
 
+\newenvironment{epigrafe}
+{%
+  \titlepage
+  \null\vspace{17.5cm}
+  \begin{flushright}
+  \begin{minipage}{0.4\textwidth}
+  \itshape
+}
+{\par\vfil\null\end{minipage}\end{flushright}\endtitlepage}
+
 \endinput
