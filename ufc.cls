@@ -19,31 +19,56 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesClass{ufc}[2014/04/24 v.0.1 Normalizacao de trabalhos academicos da Universidade federal do Ceara]
-\RequirePackage{ifthen}
+\RequirePackage{etoolbox} % Para variáveis lógicas e truque com contagem de orientadores
+\RequirePackage{mfirstuc} % Para capitalizar a primeira letra da palavra
 
-\newboolean{ufc@tese}
+% Definição de variáveis lógicas
+%% Tipos de trabalhos acadêmicos suportados
+\newbool{ufc@tese}
+\newbool{ufc@dissertacao}
+\newbool{ufc@monografia}
+\newbool{ufc@qualificacao}
+\newbool{ufc@artigo}
 
-\setboolean{ufc@tese}{false}
+%% Para análise do número de orientadores e coorientadores
+\newbool{ufc@semorientador}
+\newbool{ufc@comcoorientador}
+\newbool{ufc@semcoorientador}
+\newbool{ufc@multiplosorientadores}
+\newbool{ufc@multiploscoorientadores}
 
+% Inicializa as variáveis lógicas definidas anteriormente
+%% Valor padrão das variáveis é `false'
+\boolfalse{ufc@tese}
+\boolfalse{ufc@dissertacao}
+\boolfalse{ufc@monografia}
+\boolfalse{ufc@qualificacao}
+\boolfalse{ufc@artigo}
 
-% Opções de classe
-\DeclareOption{tese}{%
-\setboolean{ufc@tese}{true}
-}
-\DeclareOption{dissertacao}{}
-\DeclareOption{monografia}{}
-\DeclareOption{artigo}{}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
-\ProcessOptions\relax
-% Utiliza A4 como tamanho padrão
-\LoadClass[a4paper,10pt]{report}
+\boolfalse{ufc@semorientador}
+\boolfalse{ufc@comcoorientador}
+\boolfalse{ufc@semcoorientador}
+\boolfalse{ufc@multiplosorientadores}
+\boolfalse{ufc@multiploscoorientadores}
+
+% Definição das opções da classe
+\DeclareOption{tese}{\booltrue{ufc@tese}}
+\DeclareOption{dissertacao}{\booltrue{ufc@dissertacao}}
+\DeclareOption{monografia}{\booltrue{ufc@monografia}}
+\DeclareOption{qualificacao}{\booltrue{ufc@qualificacao}}
+\DeclareOption{artigo}{\booltrue{ufc@artigo}}
+\DeclareOption{rascunho}{\PassOptionsToClass{draft}{report}}
+\DeclareOption*{\ClassWarning{ufc}{Opcao `\CurrentOption' desconhecida . Ignorando}}
+\ExecuteOptions{tese} % tese é o formato padrão
+\ProcessOptions
+% Utiliza A4 como tamanho padrão, e fonte 12pt
+\LoadClass[a4paper,12pt]{report}
 
 % Pacotes essenciais para o funcionamento
 %% Para ajustar as dimensões da página 
 \RequirePackage{geometry}
 %% Controla o espaçamento entre as linhas do texto. ABNT requer espaçamento 1.5
 \RequirePackage{setspace}
-\RequirePackage{etoolbox} % Para o truque com a contagem de orientadores
 \RequirePackage{graphicx} % Para inclusão de figuras (não vá me dizer que sua
                           % tese não tem figuras?! Aposto que vai ser bem
                           % tediosa a leitura :P)
@@ -58,34 +83,113 @@
 %% Espaçamento vertical
 \def\vertskip{\vspace{60pt}}
 
-
 % Armazena o título do trabalho
-\newcommand{\ufc@titulo}{T\'itulo do trabalho}
+\newcommand{\ufc@titulo}{t\'itulo do trabalho}
 \renewcommand{\title}[1]{\renewcommand{\ufc@titulo}{#1}}
 \providecommand{\titulo}[1]{\renewcommand{\ufc@titulo}{#1}} % Comando em português
 
 % Armazena o nome do autor
-\newcommand{\ufc@autor}{Autor}
+\newcommand{\ufc@autor}{nome do autor}
 \renewcommand{\author}[1]{\renewcommand{\ufc@autor}{#1}}
 \providecommand{\autor}[1]{\renewcommand{\ufc@autor}{#1}} % Comando em português
 
-% Armazena o nome da universidade (pardrão - UFC)
+% Armazena o nome da universidade (padrão - UFC)
 \newcommand{\ufc@universidade}{Universidade Federal do Cear\'{a}}
 \providecommand{\university}[1]{\renewcommand{\ufc@universidade}{#1}}
 \providecommand{\universidade}[1]{\renewcommand{\ufc@universidade}{#1}} % Comando em português
 
 % Armazena o nome do departamento
-\newcommand{\ufc@departamento}{Nome do departamento}
+\newcommand{\ufc@departamento}{nome do departamento}
 \providecommand{\department}[1]{\renewcommand{\ufc@departamento}{#1}}
 \providecommand{\departamento}[1]{\renewcommand{\ufc@departamento}{#1}} % Comando em português
 
+% Armazena o nome do departamento
+\newcommand{\ufc@programa}{nome do programa}
+\providecommand{\program}[1]{\renewcommand{\ufc@programa}{#1}}
+\providecommand{\programa}[1]{\renewcommand{\ufc@programa}{#1}} % Comando em português
+
+% Armazena o nome do curso
+\newcommand{\ufc@curso}{F\'{i}sica}
+
 % Armazena local
-\newcommand{\ufc@local}{Fortaleza}
+\newcommand{\ufc@local}{local de publica\c{c}\~{a}o}
 \providecommand{\local}[1]{\renewcommand{\ufc@local}{#1}}
 
 % Armazena data de publicação
-\newcommand{\ufc@data}{1900}
+\newcommand{\ufc@data}{ano de publica\c{c}\~{a}o}
 \providecommand{\data}[1]{\renewcommand{\ufc@data}{#1}}
+
+\newcommand{\ufc@grau}{grau}
+\newcommand{\ufc@tipo}{tipo de documento}
+\newcommand{\ufc@apresent}{apresentada}
+
+%% Análise das opções da classe, e atribuição das variáveis textuais apropriadas
+\ifbool{ufc@tese}{%
+\renewcommand{\ufc@grau}{doutor}
+\renewcommand{\ufc@tipo}{tese}
+\renewcommand{\ufc@apresent}{apresentada}
+\renewcommand{\ufc@programa}{programa de p\'{o}s-gradua\c{c}\~{a}o em \ufc@curso}
+}{}
+
+\newcommand{\ufc@orientador}{nome do orientador}
+\newcommand{\ufc@coorientador}{nome do coorientador}
+
+% Armazena orientador(es)
+\newcommand{\orientador}[2][1]
+{
+\renewcommand{\ufc@orientador}{#2}
+\ifnumless{#1}{1}
+    {% true
+    \booltrue{ufc@semorientador}
+    \boolfalse{ufc@multiplosorientadores}
+    }
+    {% false
+    }
+\ifnumequal{#1}{1}
+    {% true
+    \boolfalse{ufc@semorientador}
+    \boolfalse{ufc@multiplosorientadores}
+    }
+    {% false
+    }
+\ifnumgreater{#1}{1}
+    {% true
+    \boolfalse{ufc@semorientador}
+    \booltrue{ufc@multiplosorientadores}
+    }
+    {% false
+    }
+}
+% Armazena coorientador(es)
+\newcommand{\coorientador}[2][1]
+{
+\renewcommand{\ufc@coorientador}{#2}
+\ifnumless{#1}{1}
+    {% true
+    \boolfalse{ufc@comcoorientador}
+    \booltrue{ufc@semcoorientador}
+    \boolfalse{ufc@multiploscoorientadores}
+    }
+    {% false
+    }
+\ifnumequal{#1}{1}
+    {% true
+    \booltrue{ufc@comcoorientador}
+    \boolfalse{ufc@semcoorientador}
+    \boolfalse{ufc@multiploscoorientadores}
+    }
+    {% false
+    }
+\ifnumgreater{#1}{1}
+    {% true
+    \booltrue{ufc@comcoorientador}
+    \boolfalse{ufc@semcoorientador}
+    \booltrue{ufc@multiploscoorientadores}
+    }
+    {% false
+    }
+}
+
 
 \renewcommand{\maketitle}
 {%
@@ -129,14 +233,24 @@
 %
 \begin{flushright}
 \begin{minipage}{.5\textwidth}
-{%
-Projeto de tese apresentado ao Programa de Pós-Graduação em Física da
-\ufc@universidade como parte dos requisitos para obtenção
-do título de Doutor em Física.\par
+\xmakefirstuc{\ufc@tipo} \ufc@apresent\ ao \ufc@programa\ da
+\ufc@universidade\ como parte dos requisitos para obten\c{c}\~{a}o
+do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
 \vspace{1cm}
-Orientador: Prof. Dr. Carlos Alberto Santos de Almeida}
 \end{minipage}
 \end{flushright}\par
+\ifbool{ufc@multiplosorientadores}
+{Orientadores:\par}{Orientador:\par}
+\ufc@orientador\par
+\vspace{60pt}
+\ifbool{ufc@comcoorientador}
+{%% true
+\ifbool{ufc@multiploscoorientadores}
+{Coorientadores:\par}{Coorientador:\par}
+\ufc@coorientador
+}
+{% false
+}
 \vfill
 %
 \ufc@local\par
