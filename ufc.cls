@@ -18,7 +18,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{teseufc}[2014/04/24 v.0.1 vct]
+\ProvidesClass{ufc}[2014/04/24 v.0.1 Normalizacao de trabalhos academicos da Universidade federal do Ceara]
+
+
 
 % Pacotes essenciais para o funcionamento
 \RequirePackage{geometry} % Para ajustar as dimensões da página 
