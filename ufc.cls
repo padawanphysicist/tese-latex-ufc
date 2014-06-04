@@ -75,7 +75,7 @@
 
 % Comandos internos
 %% Coloca texto em negrito e caixa alta
-\newcommand{\boldUppercase}[1]{\textbf{\MakeUppercase{#1}}}
+\newcommand{\boldUppercase}[1]{\MakeUppercase{\textbf{#1}}}
 %% Define geometria do verso da página
 \newcommand{\verso}{\newgeometry{right=3cm,left=2cm,top=2cm,bottom=2cm}}
 %% Define geometria do verso da página
@@ -190,6 +190,9 @@
     }
 }
 
+%% Versão robusta de quebra de linha, para o comando \MakeUppercase
+\newcommand{\e}{\protect\\}
+
 
 \renewcommand{\maketitle}
 {%
@@ -296,6 +299,16 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
    \end{center}%
 }%
 {\par\vfil\null\endtitlepage}
+
+\newenvironment{dedicatoria}
+{%
+  \titlepage
+  \null\vspace{17.5cm}
+  \begin{flushright}
+  \begin{minipage}{0.4\textwidth}
+  \itshape
+}
+{\par\vfil\null\end{minipage}\end{flushright}\endtitlepage}
 
 \newenvironment{epigrafe}
 {%
