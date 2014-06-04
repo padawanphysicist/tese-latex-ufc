@@ -38,5 +38,20 @@
                           % tese não tem figuras?! Aposto que vai ser bem
                           % tediosa a leitura :P)
 
+\renewcommand{\maketitle}
+{%
+
+}
+
+
+\renewenvironment{abstract}
+{%
+
+}
+
+\newenvironment{agradecimentos}
+{%
+
+}
 
 \endinput
