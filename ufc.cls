@@ -40,7 +40,46 @@
 
 \renewcommand{\maketitle}
 {%
-
+%% Capa
+\begin{titlepage}
+\centering
+\includegraphics[scale=0.45]{brasaoUFC.pdf}\par
+\vspace{10px}
+\textbf{UNIVERSIDADE FEDERAL DO CEAR\'A}\par
+\textbf{CENTRO DE CI\^ENCIAS}\par
+\textbf{DEPARTAMENTO DE F\'ISICA}\par
+\textbf{PROGRAMA DE PÓS-GRADUAÇÃO EM FÍSICA}\par
+%
+\vspace{2cm}
+%
+\textbf{VICTOR PEREIRA DO NASCIMENTO SANTOS}\par
+%
+\vspace{2cm}
+%
+\huge{\textbf{CENÁRIOS ENVOLVENDO VIOLAÇÃO DA SIMETRIA DE LORENTZ EM
+COSMOLOGIA QUÂNTICA EM LAÇOS}}
+%
+\vfill
+%
+\textbf{FORTALEZA}\par
+\textbf{2013}
+\end{titlepage} % Fim - Capa
+%
+%% Folha de rosto
+\begin{titlepage}
+\centering
+\textbf{VICTOR PEREIRA DO NASCIMENTO SANTOS}\par
+%
+\vspace{2cm}
+%
+\huge{\textbf{CENÁRIOS ENVOLVENDO VIOLAÇÃO DA SIMETRIA DE LORENTZ EM
+COSMOLOGIA QUÂNTICA EM LAÇOS}}
+%
+\vfill
+%
+\textbf{FORTALEZA}\par
+\textbf{2013}
+\end{titlepage}
 }
 
 
