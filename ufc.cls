@@ -258,15 +258,43 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
 \end{titlepage}
 }
 
-
+%% (Re)define o ambiente `abstract', para acomodar as páginas de
+%% abstract, resumo e agradecimentos de acordo com os requisitos
+%% das normas ABNT
 \renewenvironment{abstract}
 {%
+  \titlepage
+   \null\vfil
+   \@beginparpenalty\@lowpenalty
+   \begin{center}%
+     \bfseries ABSTRACT
+     \@endparpenalty\@M
+   \end{center}%
+}%
+{\par\vfil\null\endtitlepage}
 
-}
+\newenvironment{resumo}
+{%
+  \titlepage
+   \null\vfil
+   \@beginparpenalty\@lowpenalty
+   \begin{center}%
+     \bfseries RESUMO
+     \@endparpenalty\@M
+   \end{center}%
+}%
+{\par\vfil\null\endtitlepage}
 
 \newenvironment{agradecimentos}
 {%
-
-}
+  \titlepage
+   \null\vfil
+   \@beginparpenalty\@lowpenalty
+   \begin{center}%
+     \bfseries AGRADECIMENTOS
+     \@endparpenalty\@M
+   \end{center}%
+}%
+{\par\vfil\null\endtitlepage}
 
 \endinput
