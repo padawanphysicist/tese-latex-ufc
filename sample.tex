@@ -1,4 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
+% tese.tex
+% Documento principal
+%
+% Espero que você consiga compilar o documento sem problemas; caso contrário, 
+% que os comentários ao longo deste documento e no preâmbulo (preambulo.tex) 
+% possam ajudar. Se mesmo assim você tiver problemas, recomendo fortemente que
+% você fique amigo do Google (www.google.com) e https://tex.stackexchange.com/.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
+
+% ------ Preâmbulo 
+% Este é o "coração" do documento: cria a capa, folha de rosto, ficha
+% catalográfica e toda estrutura específica para as normas da UFC
 \documentclass[rascunho]{ufc}
+
+% Cuidado aqui! trocar `input' por `include' pode causar uma baita dor de 
+% cabeça. A não ser que você saiba o que está fazendo, não mexa nesse comando!
+%\input{preambulo}
+
 
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
@@ -6,6 +25,9 @@
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{mathrsfs}
 \usepackage{epsfig}
+
+% Diretório onde estão armazenadas as figuras
+\graphicspath{{./img/}}
 
 % Informações sobre a universidade
 \universidade{Universidade de Springfield}
@@ -596,7 +618,7 @@ Z. Wiles's construction of functionals was a milestone in geometric logic. In \c
 
 
 \begin{footnotesize}
-\bibliography{scigenbibfile,scigenbibfile.C.+U.+Randall.Y.+N.+-t+Hooft.M.+Y.+Sundrum}
+\bibliography{referencias.bib}
 \bibliographystyle{plainnat}
 \end{footnotesize}
 
