@@ -1,12 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
-% tese.tex
-% Documento principal
+% exemplo.tex 
+% Exemplo mínimo mostrando como usar a classe ufc.cls
 %
-% Espero que você consiga compilar o documento sem problemas; caso contrário, 
-% que os comentários ao longo deste documento e no preâmbulo (preambulo.tex) 
-% possam ajudar. Se mesmo assim você tiver problemas, recomendo fortemente que
-% você fique amigo do Google (www.google.com) e https://tex.stackexchange.com/.
-% 
+% Espero que você consiga compilar o documento sem problemas; caso
+% contrário, que os comentários ao longo deste documento possam
+% ajudar. Se mesmo assim você tiver problemas, recomendo fortemente
+% que você fique amigo do Google (www.google.com) e
+% https://tex.stackexchange.com/.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
 
 % ------ Preâmbulo 
@@ -14,14 +14,11 @@
 % catalográfica e toda estrutura específica para as normas da UFC
 \documentclass[rascunho]{ufc}
 
-% Cuidado aqui! trocar `input' por `include' pode causar uma baita dor de 
-% cabeça. A não ser que você saiba o que está fazendo, não mexa nesse comando!
-%\input{preambulo}
-
-
+% Esses pacotes são necessários apenas para a compilação correta do
+% exemplo; ao trocar pelo seu próprio conteúdo, reconsidere a inclusão
+% deles.
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
-
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{mathrsfs}
 \usepackage{epsfig}
@@ -35,6 +32,9 @@
 \data{Maio de 2006}
 \local{Springfield}
 \curso{Matemática}
+
+%% Caso queira modificar o texto apresentado na folha de rosto, use o
+%% comando a seguir
 %\natureza{}
 
 \autor{Leonard Leopold Hofstader Witten}
@@ -43,11 +43,12 @@
 \orientador[2]{Myles Yang Sundrum \e Yonz Hökkanen~'t Hooft}
 \coorientador[3]{Henry Fermi \e Wally Unruh \e Gerard Schwinger}
 
+
+
+%%% Comandos específicos para o exemplo
 \newcommand{\truncateit}[1]{\truncate{0.8\textwidth}{#1}}
 \newcommand{\scititle}[1]{\title[\truncateit{#1}]{#1}}
-
 \pdfinfo{ /MathgenSeed (1305489258) }
-
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}[theorem]{Corollary}
@@ -62,6 +63,8 @@
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{exercise}[theorem]{Exercise}
 
+
+%% Início do documento
 \begin{document}
 \maketitle
 \begin{resumo}
