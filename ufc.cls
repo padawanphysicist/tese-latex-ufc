@@ -21,6 +21,11 @@
 \ProvidesClass{ufc}[2014/04/24 v.0.1 Normalizacao de trabalhos academicos da Universidade federal do Ceara]
 \RequirePackage{etoolbox} % Para variáveis lógicas e truque com contagem de orientadores
 \RequirePackage{mfirstuc} % Para capitalizar a primeira letra da palavra
+%\RequirePackage{indentfirst} % Para identação dos primeiros parágrafos
+\RequirePackage{showframe} % Para auxiliar o modo rascunho
+\RequirePackage{typogrid} % Para auxiliar o modo rascunho
+
+
 
 % Definição de variáveis lógicas
 %% Tipos de trabalhos acadêmicos suportados
@@ -57,7 +62,11 @@
 \DeclareOption{monografia}{\booltrue{ufc@monografia}}
 \DeclareOption{qualificacao}{\booltrue{ufc@qualificacao}}
 \DeclareOption{artigo}{\booltrue{ufc@artigo}}
-\DeclareOption{rascunho}{\PassOptionsToClass{draft}{report}}
+\DeclareOption{rascunho}{
+\PassOptionsToClass{draft}{report}
+\PassOptionsToPackage{showframe}{geometry}
+\PassOptionsToPackage{draft,columns=4}{typogrid}
+}
 \DeclareOption*{\ClassWarning{ufc}{Opcao `\CurrentOption' desconhecida . Ignorando}}
 \ExecuteOptions{tese} % tese é o formato padrão
 \ProcessOptions
@@ -103,13 +112,14 @@
 \providecommand{\department}[1]{\renewcommand{\ufc@departamento}{#1}}
 \providecommand{\departamento}[1]{\renewcommand{\ufc@departamento}{#1}} % Comando em português
 
-% Armazena o nome do departamento
+% Armazena o nome do departamento e o programa do mesmo
 \newcommand{\ufc@programa}{nome do programa}
 \providecommand{\program}[1]{\renewcommand{\ufc@programa}{#1}}
 \providecommand{\programa}[1]{\renewcommand{\ufc@programa}{#1}} % Comando em português
 
 % Armazena o nome do curso
-\newcommand{\ufc@curso}{F\'{i}sica}
+\newcommand{\ufc@curso}{nome do curso}
+\providecommand{\curso}[1]{\renewcommand{\ufc@curso}{#1}}
 
 % Armazena local
 \newcommand{\ufc@local}{local de publica\c{c}\~{a}o}
@@ -193,7 +203,6 @@
 %% Versão robusta de quebra de linha, para o comando \MakeUppercase
 \newcommand{\e}{\protect\\}
 
-
 \renewcommand{\maketitle}
 {%
 %% Capa
@@ -201,7 +210,7 @@
 \singlespacing
 \begin{titlepage}
 \centering
-\includegraphics[scale=0.45]{brasaoUFC.pdf}\par
+\includegraphics[scale=0.45]{brasaoUFC}\par
 \vspace{10px}
 \boldUppercase{\ufc@universidade}\par
 \boldUppercase{\ufc@departamento}\par
@@ -290,6 +299,8 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
 
 \newenvironment{agradecimentos}
 {%
+  %% Ajusta a identação
+  %\setlength\parindent{1.5cm}
   \titlepage
    \null\vfil
    \@beginparpenalty\@lowpenalty
@@ -297,6 +308,8 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
      \bfseries AGRADECIMENTOS
      \@endparpenalty\@M
    \end{center}%
+   \par
+
 }%
 {\par\vfil\null\endtitlepage}
 
@@ -319,5 +332,4 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
   \itshape
 }
 {\par\vfil\null\end{minipage}\end{flushright}\endtitlepage}
-
 \endinput
