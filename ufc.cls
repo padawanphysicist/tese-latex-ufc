@@ -251,6 +251,7 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
 \vspace{1cm}
 \end{minipage}
 \end{flushright}\par
+\vertskip
 \ifbool{ufc@multiplosorientadores}
 {Orientadores:\par}{Orientador:\par}
 \ufc@orientador\par
