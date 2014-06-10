@@ -102,10 +102,10 @@
 \renewcommand{\author}[1]{\renewcommand{\ufc@autor}{#1}}
 \providecommand{\autor}[1]{\renewcommand{\ufc@autor}{#1}} % Comando em português
 
-% Armazena o nome da universidade (padrão - UFC)
-\newcommand{\ufc@universidade}{Universidade Federal do Cear\'{a}}
-\providecommand{\university}[1]{\renewcommand{\ufc@universidade}{#1}}
-\providecommand{\universidade}[1]{\renewcommand{\ufc@universidade}{#1}} % Comando em português
+% Armazena o nome da instituição (padrão - UFC)
+\newcommand{\ufc@instituicao}{Universidade Federal do Cear\'{a}}
+\providecommand{\institution}[1]{\renewcommand{\ufc@instituicao}{#1}}
+\providecommand{\instituicao}[1]{\renewcommand{\ufc@instituicao}{#1}} % Comando em português
 
 % Armazena o nome do departamento
 \newcommand{\ufc@departamento}{nome do departamento}
@@ -212,7 +212,7 @@
 \centering
 \includegraphics[scale=0.45]{brasaoUFC}\par
 \vspace{10px}
-\boldUppercase{\ufc@universidade}\par
+\boldUppercase{\ufc@instituicao}\par
 \boldUppercase{\ufc@departamento}\par
 %
 \vspace{2cm}
@@ -246,7 +246,7 @@
 \begin{flushright}
 \begin{minipage}{.5\textwidth}
 \xmakefirstuc{\ufc@tipo} \ufc@apresent\ ao \ufc@programa\ da
-\ufc@universidade\ como parte dos requisitos para obten\c{c}\~{a}o
+\ufc@instituicao\ como parte dos requisitos para obten\c{c}\~{a}o
 do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
 \vspace{1cm}
 \end{minipage}
