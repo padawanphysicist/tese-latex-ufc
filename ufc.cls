@@ -215,11 +215,11 @@
 \boldUppercase{\ufc@instituicao}\par
 \boldUppercase{\ufc@departamento}\par
 %
-\vspace{2cm}
+\vertskip
 %
 \boldUppercase{\ufc@autor}\par
 %
-\vspace{2cm}
+\vertskip\vertskip
 %
 {\huge\boldUppercase{\ufc@titulo}}
 %
@@ -237,11 +237,11 @@
 \centering
 \MakeUppercase{\ufc@autor}\par
 %
-\vspace{2cm}
+\vertskip
 %
 {\huge\ufc@titulo}
 %
-\vspace{2cm}
+\vertskip
 %
 \begin{flushright}
 \begin{minipage}{.5\textwidth}
