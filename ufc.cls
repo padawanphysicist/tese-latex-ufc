@@ -221,7 +221,7 @@
 %
 \vertskip\vertskip
 %
-{\huge\boldUppercase{\ufc@titulo}}
+{\LARGE\boldUppercase{\ufc@titulo}}
 %
 \vfill
 %
@@ -239,7 +239,7 @@
 %
 \vertskip
 %
-{\huge\ufc@titulo}
+{\LARGE\ufc@titulo}
 %
 \vertskip
 %
@@ -280,7 +280,7 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
    \null\vfil
    \@beginparpenalty\@lowpenalty
    \begin{center}%
-     \bfseries ABSTRACT
+     \bfseries\LARGE ABSTRACT
      \@endparpenalty\@M
    \end{center}%
 }%
@@ -292,7 +292,7 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
    \null\vfil
    \@beginparpenalty\@lowpenalty
    \begin{center}%
-     \bfseries RESUMO
+     \bfseries\LARGE RESUMO
      \@endparpenalty\@M
    \end{center}%
 }%
@@ -306,7 +306,7 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
    \null\vfil
    \@beginparpenalty\@lowpenalty
    \begin{center}%
-     \bfseries AGRADECIMENTOS
+     \bfseries\LARGE AGRADECIMENTOS
      \@endparpenalty\@M
    \end{center}%
    \par
@@ -333,4 +333,17 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
   \itshape
 }
 {\par\vfil\null\end{minipage}\end{flushright}\endtitlepage}
+
+\newenvironment{listapublicacoes}
+{%
+  \titlepage
+   \null\vfil
+   \@beginparpenalty\@lowpenalty
+   \begin{center}%
+     \bfseries \LARGE LISTA DE TRABALHOS PUBLICADOS
+     \@endparpenalty\@M
+   \end{center}%
+}%
+{\par\vfil\null\endtitlepage}
+
 \endinput
