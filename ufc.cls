@@ -18,11 +18,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesClass{ufc}[2014/04/24 v.0.1 Normalizacao de trabalhos academicos da Universidade federal do Ceara]
+\ProvidesClass{ufc}[2014/04/24 v.0.1 Normalização de trabalhos academicos da Universidade federal do Ceara]
+% Pacotes essenciais para o funcionamento da classe
 \RequirePackage{etoolbox} % Para variáveis lógicas e truque com contagem de orientadores
 \RequirePackage{mfirstuc} % Para capitalizar a primeira letra da palavra
-%\RequirePackage{indentfirst} % Para identação dos primeiros parágrafos
 \RequirePackage{typogrid} % Para auxiliar o modo rascunho
+%% Controla o espaçamento entre as linhas do texto. ABNT requer espaçamento 1.5
+\RequirePackage{setspace}
+\RequirePackage{graphicx} % Para inclusão de figuras (não vá me dizer que sua
+                          % tese não tem figuras?! Aposto que vai ser bem
+                          % tediosa a leitura :P)
+
 
 
 
@@ -219,7 +225,7 @@
 \begin{titlepage}
 \centering
 \includegraphics[scale=0.45]{brasaoUFC}\par
-\vspace{10px}
+\vspace{0.5cm}
 \boldUppercase{\ufc@instituicao}\par
 \boldUppercase{\ufc@departamento}\par
 %
