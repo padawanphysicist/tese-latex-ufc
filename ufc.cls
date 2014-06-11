@@ -22,7 +22,6 @@
 \RequirePackage{etoolbox} % Para variáveis lógicas e truque com contagem de orientadores
 \RequirePackage{mfirstuc} % Para capitalizar a primeira letra da palavra
 %\RequirePackage{indentfirst} % Para identação dos primeiros parágrafos
-\RequirePackage{showframe} % Para auxiliar o modo rascunho
 \RequirePackage{typogrid} % Para auxiliar o modo rascunho
 
 
@@ -66,6 +65,15 @@
 \PassOptionsToClass{draft}{report}
 \PassOptionsToPackage{showframe}{geometry}
 \PassOptionsToPackage{draft,columns=4}{typogrid}
+}
+\DeclareOption{final}{
+\PassOptionsToClass{final}{report}
+\PassOptionsToPackage{final}{typogrid}
+}
+%% Estas opções mudam as cores dos links
+\DeclareOption{eletronica}{
+}
+\DeclareOption{impressa}{
 }
 \DeclareOption*{\ClassWarning{ufc}{Opcao `\CurrentOption' desconhecida . Ignorando}}
 \ExecuteOptions{tese} % tese é o formato padrão
