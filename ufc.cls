@@ -108,27 +108,22 @@
 
 % Armazena o título do trabalho
 \newcommand{\ufc@titulo}{t\'itulo do trabalho}
-\renewcommand{\title}[1]{\renewcommand{\ufc@titulo}{#1}}
 \providecommand{\titulo}[1]{\renewcommand{\ufc@titulo}{#1}} % Comando em português
 
 % Armazena o nome do autor
 \newcommand{\ufc@autor}{nome do autor}
-\renewcommand{\author}[1]{\renewcommand{\ufc@autor}{#1}}
 \providecommand{\autor}[1]{\renewcommand{\ufc@autor}{#1}} % Comando em português
 
 % Armazena o nome da instituição (padrão - UFC)
 \newcommand{\ufc@instituicao}{Universidade Federal do Cear\'{a}}
-\providecommand{\institution}[1]{\renewcommand{\ufc@instituicao}{#1}}
 \providecommand{\instituicao}[1]{\renewcommand{\ufc@instituicao}{#1}} % Comando em português
 
 % Armazena o nome do departamento
 \newcommand{\ufc@departamento}{nome do departamento}
-\providecommand{\department}[1]{\renewcommand{\ufc@departamento}{#1}}
 \providecommand{\departamento}[1]{\renewcommand{\ufc@departamento}{#1}} % Comando em português
 
 % Armazena o nome do departamento e o programa do mesmo
 \newcommand{\ufc@programa}{nome do programa}
-\providecommand{\program}[1]{\renewcommand{\ufc@programa}{#1}}
 \providecommand{\programa}[1]{\renewcommand{\ufc@programa}{#1}} % Comando em português
 
 % Armazena o nome do curso
