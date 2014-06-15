@@ -20,14 +20,9 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesClass{ufc}[2014/04/24 v.0.1 Normalização de trabalhos academicos da Universidade federal do Ceara]
 % Pacotes essenciais para o funcionamento da classe
+\RequirePackage{ifxetex} % Verifica quando o documento foi compilado com XeTeX ou pdfTeX
 \RequirePackage{etoolbox} % Para variáveis lógicas e truque com contagem de orientadores
 \RequirePackage{mfirstuc} % Para capitalizar a primeira letra da palavra
-\RequirePackage{typogrid} % Para auxiliar o modo rascunho
-%% Controla o espaçamento entre as linhas do texto. ABNT requer espaçamento 1.5
-\RequirePackage{setspace}
-\RequirePackage{graphicx} % Para inclusão de figuras (não vá me dizer que sua
-                          % tese não tem figuras?! Aposto que vai ser bem
-                          % tediosa a leitura :P)
 
 
 
@@ -70,11 +65,9 @@
 \DeclareOption{rascunho}{
 \PassOptionsToClass{draft}{report}
 \PassOptionsToPackage{showframe}{geometry}
-\PassOptionsToPackage{draft,columns=4}{typogrid}
 }
 \DeclareOption{final}{
 \PassOptionsToClass{final}{report}
-\PassOptionsToPackage{final}{typogrid}
 }
 %% Estas opções mudam as cores dos links
 \DeclareOption{eletronica}{
@@ -92,9 +85,17 @@
 \RequirePackage{geometry}
 %% Controla o espaçamento entre as linhas do texto. ABNT requer espaçamento 1.5
 \RequirePackage{setspace}
-\RequirePackage{graphicx} % Para inclusão de figuras (não vá me dizer que sua
-                          % tese não tem figuras?! Aposto que vai ser bem
-                          % tediosa a leitura :P)
+% Para inclusão de figuras (não vá me dizer que sua
+% tese não tem figuras?! Aposto que vai ser bem
+% tediosa a leitura :P)
+\ifxetex
+  % XeLaTeX
+  \RequirePackage[xetex]{graphicx}
+\else
+  % pdfLaTeX
+  \RequirePackage{graphicx}
+\fi
+
 
 % Comandos internos
 %% Coloca texto em negrito e caixa alta
