@@ -65,6 +65,7 @@
 \DeclareOption{rascunho}{
 \PassOptionsToClass{draft}{report}
 \PassOptionsToPackage{showframe}{geometry}
+\PassOptionsToPackage{draft}{graphicx}
 }
 \DeclareOption{final}{
 \PassOptionsToClass{final}{report}
