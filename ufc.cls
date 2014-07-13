@@ -221,7 +221,7 @@
 \singlespacing
 \begin{titlepage}
 \centering
-\includegraphics[width=0.15\textwidth]{brasaoUFC}\par
+\includegraphics[width=0.15\textwidth]{brasao-ufc}\par
 \vspace{0.5cm}
 \boldUppercase{\ufc@instituicao}\par
 \boldUppercase{\ufc@departamento}\par
