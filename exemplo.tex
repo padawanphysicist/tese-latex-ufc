@@ -11,7 +11,13 @@
 
 % ------ Preâmbulo 
 % Este é o "coração" do documento: cria a capa, folha de rosto, ficha
-% catalográfica e toda estrutura específica para as normas da UFC
+% catalográfica e toda estrutura específica para as normas da UFC.
+%% As únicas opções que estão funcionando até o momento são:
+%%   - rascunho: Mostra caixas no lugar das figuras (isso acelera a compilação)
+%%               Mostra caixas no texto (para que você possa ver texto fora da margem)
+%%               Mostra os 'overfull boxes' do LaTeX
+%%   - final: Essa é opção que você vai usar quando finalizar a escrita, para compilar
+%%            o documento final.
 \documentclass[rascunho]{ufc}
 
 % Esses pacotes são necessários apenas para a compilação correta do
