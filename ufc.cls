@@ -42,6 +42,15 @@
 \newbool{ufc@multiplosorientadores}
 \newbool{ufc@multiploscoorientadores}
 
+%% Para análise do número de examinadores
+\newbool{ufc@semexaminador}
+\newbool{ufc@comexaminador}
+\newbool{ufc@multiplosexaminadores}
+
+%% Para dizer à classe que o trabalho foi aprovado
+\newbool{ufc@aprovado}
+
+
 % Inicializa as variáveis lógicas definidas anteriormente
 %% Valor padrão das variáveis é `false'
 \boolfalse{ufc@tese}
@@ -55,6 +64,8 @@
 \boolfalse{ufc@semcoorientador}
 \boolfalse{ufc@multiplosorientadores}
 \boolfalse{ufc@multiploscoorientadores}
+
+\boolfalse{ufc@aprovado}
 
 % Definição das opções da classe
 \DeclareOption{tese}{\booltrue{ufc@tese}}
@@ -75,6 +86,9 @@
 }
 \DeclareOption{impressa}{
 }
+%% Opção para declarar o trabalho como 'aprovado'
+\DeclareOption{aprovado}{\booltrue{ufc@aprovado}}
+
 \DeclareOption*{\ClassWarning{ufc}{Opcao `\CurrentOption' desconhecida . Ignorando}}
 \ExecuteOptions{tese} % tese é o formato padrão
 \ProcessOptions
@@ -136,9 +150,18 @@
 \newcommand{\ufc@local}{local de publica\c{c}\~{a}o}
 \providecommand{\local}[1]{\renewcommand{\ufc@local}{#1}}
 
-% Armazena data de publicação
-\newcommand{\ufc@data}{ano de publica\c{c}\~{a}o}
-\providecommand{\data}[1]{\renewcommand{\ufc@data}{#1}}
+% Armazena dia, mês e ano de publicação
+\newcommand{\ufc@dia}{dia de publica\c{c}\~{a}o}
+\newcommand{\ufc@mes}{m\^{e}s de publica\c{c}\~{a}o}
+\newcommand{\ufc@ano}{ano de publica\c{c}\~{a}o}
+% Armazena data de aprovação
+\newcommand{\ufc@aprovacao}{data de aprova\c{c}\~{a}o}
+\providecommand{\data}[3]{%
+  \renewcommand{\ufc@dia}{#1}
+  \renewcommand{\ufc@mes}{#2}
+  \renewcommand{\ufc@ano}{#3}
+  \renewcommand{\ufc@aprovacao}{\ufc@dia/\ufc@mes/\ufc@ano}
+}
 
 \newcommand{\ufc@grau}{grau}
 \newcommand{\ufc@tipo}{tipo de documento}
@@ -154,6 +177,7 @@
 
 \newcommand{\ufc@orientador}{nome do orientador}
 \newcommand{\ufc@coorientador}{nome do coorientador}
+\newcommand{\ufc@bancaexaminadora}{banca examinadora}
 
 % Armazena orientador(es)
 \newcommand{\orientador}[2][1]
@@ -211,14 +235,44 @@
     }
 }
 
+% Armazena examinador(es)
+\newcommand{\bancaexaminadora}[2][1]
+{
+\renewcommand{\ufc@bancaexaminadora}{#2}
+\ifnumless{#1}{1}
+    {% true
+    \booltrue{ufc@semexaminador}
+    \boolfalse{ufc@multiplosexaminadores}
+    }
+    {% false
+    }
+\ifnumequal{#1}{1}
+    {% true
+    \boolfalse{ufc@semexaminador}
+    \boolfalse{ufc@multiplosexaminadores}
+    }
+    {% false
+    }
+\ifnumgreater{#1}{1}
+    {% true
+    \boolfalse{ufc@semexaminador}
+    \booltrue{ufc@multiplosexaminadores}
+    }
+    {% false
+    }
+}
+
 %% Versão robusta de quebra de linha, para o comando \MakeUppercase
 \newcommand{\e}{\protect\\}
+
+%% Comando para adicionar assinatura
+\newcommand{\assinatura}[2]{\rule{10cm}{0.7pt}\par#1\par#2}
 
 \renewcommand{\maketitle}
 {%
 %% Capa
 \anverso
-\singlespacing
+\onehalfspacing
 \begin{titlepage}
 \centering
 \includegraphics[width=0.15\textwidth]{brasao-ufc}\par
@@ -237,7 +291,7 @@
 \vfill
 %
 \boldUppercase{\ufc@local}\par
-\boldUppercase{\ufc@data}
+\boldUppercase{\ufc@ano}
 \end{titlepage} % Fim - Capa
 %
 %% Folha de rosto
@@ -278,7 +332,48 @@ do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
 \vfill
 %
 \ufc@local\par
-\ufc@data
+\ufc@ano
+\end{titlepage}
+%
+%% Folha de aprovação
+%%% A folha de aprovação tem espaçamento padrão da ABNT (1.5)
+\anverso
+\onehalfspacing
+\begin{titlepage}
+\centering
+\MakeUppercase{\ufc@autor}\par
+%
+\vertskip
+%
+{\LARGE\ufc@titulo}
+%
+\vertskip
+%
+\begin{flushright}
+\begin{minipage}{.5\textwidth}
+\xmakefirstuc{\ufc@tipo} \ufc@apresent\ ao \ufc@programa\ da
+\ufc@instituicao\ como parte dos requisitos para obten\c{c}\~{a}o
+do t\'{i}tulo de \xmakefirstuc{\ufc@grau} em \xmakefirstuc{\ufc@curso}.\par
+\vspace{1cm}
+\end{minipage}
+\end{flushright}\par
+\begin{flushleft}
+  Aprovada em: \ifbool{ufc@aprovado}{\ufc@aprovacao}{}
+\end{flushleft}
+\vertskip
+\begin{center}
+  \MakeUppercase{banca examinadora}
+\end{center}
+\ifbool{ufc@multiplosexaminadores}
+\ufc@bancaexaminadora\par
+\vspace{60pt}
+\ifbool{ufc@comexaminador}
+{%% true
+\ifbool{ufc@multiplosexaminadores}
+\ufc@bancaexaminadora\par
+}
+{% false
+}
 \end{titlepage}
 }
 
