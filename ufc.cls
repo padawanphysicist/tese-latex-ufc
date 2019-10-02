@@ -18,7 +18,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%80
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesClass{ufc}[2014/04/24 v.0.1 Normalização de trabalhos academicos da Universidade federal do Ceara]
+\ProvidesClass{ufc}[2014/04/24 v.0.1 Normalizacao de trabalhos academicos da Universidade federal do Ceara]
 % Pacotes essenciais para o funcionamento da classe
 \RequirePackage{ifxetex} % Verifica quando o documento foi compilado com XeTeX ou pdfTeX
 \RequirePackage{etoolbox} % Para variáveis lógicas e truque com contagem de orientadores
